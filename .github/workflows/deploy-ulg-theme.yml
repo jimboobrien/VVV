@@ -1,4 +1,4 @@
-name: Deploy ULG Sites Themes
+name: Deploy ULG Sites
 
 on:
   push:
