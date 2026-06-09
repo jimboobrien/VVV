@@ -8,9 +8,11 @@
         "pegasus-child": { "branch": "ulg_theme" }
       },
       "plugins": [
+        "pegasus-accordion",
         "pegasus-carousel",
         "pegasus-slider",
         "pegasus-toggleslide",
+        "pegasus-wow",
         "wp-bootstrap-hooks"
       ]
     },
@@ -24,6 +26,7 @@
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
+        "pegasus-wow",
         "wp-bootstrap-hooks"
       ]
     },
@@ -38,6 +41,8 @@
         "pegasus-carousel",
         "pegasus-packery",
         "pegasus-slider",
+        "pegasus-wow",
+        "vqdev-toast",
         "wp-bootstrap-hooks"
       ]
     },
@@ -51,6 +56,8 @@
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
+        "pegasus-wow",
+        "vqdev-toast",
         "wp-bootstrap-hooks"
       ]
     },
@@ -62,7 +69,11 @@
         "pegasus-child": { "branch": "saltcellar_theme" }
       },
       "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
         "pegasus-tabs",
+        "pegasus-wow",
+        "vqdev-toast",
         "wp-bootstrap-hooks"
       ]
     },
@@ -74,15 +85,190 @@
         "pegasus-child": { "branch": "mixmarket_theme" }
       },
       "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "vqdev-toast",
         "wp-bootstrap-hooks"
       ]
     },
     "tommygs": {
-      "name": "Tommy Gs",
+      "name": "Tommy G's",
       "local_dir": "tommygs",
       "themes": {
         "pegasus": { "branch": "master" },
         "pegasus-child": { "branch": "tommygs_theme" }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "vqdev-toast",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "sugarpeddler": {
+      "name": "Sugarpeddler",
+      "local_dir": "sugarpeddler",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "sugarpeddler_theme" }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "vqdev-toast",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "pegasustheme": {
+      "name": "Pegasus Theme",
+      "local_dir": "pegasustheme",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "pegasustheme_child" }
+      },
+      "plugins": [
+        "pegasus-blog",
+        "pegasus-callout",
+        "pegasus-carousel",
+        "pegasus-circle-progress",
+        "pegasus-countup",
+        "pegasus-masonry",
+        "pegasus-navmenu",
+        "pegasus-onepage",
+        "pegasus-packery",
+        "pegasus-popup",
+        "pegasus-post-grid",
+        "pegasus-posts-filter",
+        "pegasus-slider",
+        "pegasus-tabs",
+        "pegasus-toggleslide",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "vqgoods": {
+      "name": "VisionQuest Goods",
+      "local_dir": "visionquestgoods",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "vqgoods_theme" }
+      },
+      "plugins": []
+    },
+    "sagescnc": {
+      "name": "Sage's CNC",
+      "local_dir": "sagecnc",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "sagescnc_theme" }
+      },
+      "plugins": [
+        "pegasus-accordion",
+        "pegasus-carousel",
+        "pegasus-tabs",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "qbiqcamp": {
+      "name": "QBIQ Camp",
+      "local_dir": "qbiqcamp",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "qbiqcamp_theme" }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-onepage",
+        "pegasus-packery",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "qbiqsystem": {
+      "name": "QBIQ System",
+      "local_dir": "qbiqsystem",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "qbiqsystem_theme" }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "vineandvision": {
+      "name": "Vine and Vision Consulting",
+      "local_dir": "vineandvision",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "vineandvision_theme" }
+      },
+      "plugins": [
+        "pegasus-callout",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "34oak": {
+      "name": "34 Oak Contracting",
+      "local_dir": "34oak",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "34oak_theme" }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-masonry",
+        "pegasus-packery",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "russelcontracting": {
+      "name": "Russell Contracting",
+      "local_dir": "russelcontracting",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "russellcontracting_theme" }
+      },
+      "plugins": []
+    },
+    "ricecapital": {
+      "name": "Rice Capital Fund",
+      "local_dir": "ricecapital",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "ricecapital_theme" }
+      },
+      "plugins": [
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "gentwo": {
+      "name": "Gen2 Automation",
+      "local_dir": "gentwo",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "gentwo_theme" }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "osps26": {
+      "name": "OSPS26",
+      "local_dir": "osps26",
+      "themes": {
+        "pegasus": { "branch": "master" },
+        "pegasus-child": { "branch": "osps26_theme" }
       },
       "plugins": [
         "wp-bootstrap-hooks"

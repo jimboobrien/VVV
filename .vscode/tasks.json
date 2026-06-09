@@ -184,6 +184,472 @@
 				"panel": "new"
 			},
 			"problemMatcher": []
+		},
+		{
+			"label": "All Sites: Open All Terminals",
+			"type": "shell",
+			"command": "echo",
+			"args": ["Opening all site terminals..."],
+			"dependsOn": [
+				"ULG: Theme",
+				"ULG: Claude",
+				"ULG Events: Theme",
+				"ULG Events: Claude",
+				"The Loft: Theme",
+				"The Loft: Claude",
+				"Mabellas: Theme",
+				"Mabellas: Claude",
+				"Saltcellar: Theme",
+				"Saltcellar: Claude",
+				"The Mix Market: Theme",
+				"The Mix Market: Claude",
+				"TommyG's: Theme",
+				"TommyG's: Claude",
+				"Sugarpeddler: Theme",
+				"Sugarpeddler: Claude",
+				"Pegasus Theme: Theme",
+				"Pegasus Theme: Claude",
+				"VisionQuest Goods: Theme",
+				"VisionQuest Goods: Claude",
+				"Sage's CNC: Theme",
+				"Sage's CNC: Claude",
+				"QBIQ Camp: Theme",
+				"QBIQ Camp: Claude",
+				"QBIQ System: Theme",
+				"QBIQ System: Claude",
+				"Vine and Vision Consulting: Theme",
+				"Vine and Vision Consulting: Claude",
+				"34 Oak Contracting: Theme",
+				"34 Oak Contracting: Claude",
+				"Russell Contracting: Theme",
+				"Russell Contracting: Claude",
+				"Rice Capital Fund: Theme",
+				"Rice Capital Fund: Claude",
+				"Gen2 Automation: Theme",
+				"Gen2 Automation: Claude",
+				"OSPS26: Theme",
+				"OSPS26: Claude"
+			],
+			"dependsOrder": "parallel",
+			"problemMatcher": []
+		},
+		{
+			"label": "ULG: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/uptownlifegroup/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "ULG: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/uptownlifegroup/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "ULG Events: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/ulgevents/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "ULG Events: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/ulgevents/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "The Loft: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/theloftnew/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "The Loft: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/theloftnew/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Mabellas: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/mabellas/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Mabellas: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/mabellas/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Saltcellar: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/saltcellar/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Saltcellar: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/saltcellar/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "The Mix Market: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/mixmarket/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "The Mix Market: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/mixmarket/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "TommyG's: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/tommygs/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "TommyG's: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/tommygs/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Sugarpeddler: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/sugarpeddler/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Sugarpeddler: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/sugarpeddler/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Pegasus Theme: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/pegasustheme/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Pegasus Theme: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/pegasustheme/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "VisionQuest Goods: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/visionquestgoods/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "VisionQuest Goods: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/visionquestgoods/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Sage's CNC: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/sagecnc/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Sage's CNC: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/sagecnc/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "QBIQ Camp: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/qbiqcamp/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "QBIQ Camp: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/qbiqcamp/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "QBIQ System: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/qbiqsystem/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "QBIQ System: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/qbiqsystem/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Vine and Vision Consulting: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/vineandvision/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Vine and Vision Consulting: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/vineandvision/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "34 Oak Contracting: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/34oak/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "34 Oak Contracting: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/34oak/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Russell Contracting: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/russelcontracting/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Russell Contracting: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/russelcontracting/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Rice Capital Fund: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/ricecapital/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Rice Capital Fund: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/ricecapital/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Gen2 Automation: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/gentwo/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Gen2 Automation: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/gentwo/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "OSPS26: Theme",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "git status; exec zsh -l"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/osps26/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "OSPS26: Claude",
+			"type": "shell",
+			"command": "zsh",
+			"args": ["-lc", "claude"],
+			"options": {
+				"cwd": "/home/jim/Projects/vagrant-local/www/osps26/public_html/wp-content/themes/pegasus-child"
+			},
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
 		}
 	]
 }
