@@ -8,8 +8,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2337-sdvymoa8u5vg@gvam1201.siteground.biz -p 18765",
       "remote_path": "/home/u2337-sdvymoa8u5vg/www/uptownlifegroup.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "ulg_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "ulg_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-accordion",
@@ -18,7 +23,16 @@
         "pegasus-toggleslide",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "uptownlifegroup",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2337-sdvymoa8u5vg/www/uptownlifegroup.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:OokfOlhUTxoJs5CaoIQ9QlegXE6s1+1l2gDZbDKpe+I",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "ulg-events": {
       "name": "ULG Events",
@@ -28,15 +42,29 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2337-sdvymoa8u5vg@gvam1201.siteground.biz -p 18765",
       "remote_path": "/home/u2337-sdvymoa8u5vg/www/events.uptownlifegroup.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "ulg_events_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "ulg_events_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "ulgevents",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2337-sdvymoa8u5vg/www/events.uptownlifegroup.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:OokfOlhUTxoJs5CaoIQ9QlegXE6s1+1l2gDZbDKpe+I",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "theloft": {
       "name": "The Loft",
@@ -46,8 +74,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2322-twgfllmscyih@gvam1201.siteground.biz -p 18765",
       "remote_path": "/home/u2322-twgfllmscyih/www/theloft.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "theloft2025_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "theloft2025_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -56,7 +89,16 @@
         "pegasus-wow",
         "vqdev-toast",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "theloftnew",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2322-twgfllmscyih/www/theloft.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:OokfOlhUTxoJs5CaoIQ9QlegXE6s1+1l2gDZbDKpe+I",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "mabellas": {
       "name": "Mabellas",
@@ -66,8 +108,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2334-rmtgm55yo6gg@gvam1201.siteground.biz -p 18765",
       "remote_path": "/home/u2334-rmtgm55yo6gg/www/mabellas.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "mabellas_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "mabellas_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -75,7 +122,16 @@
         "pegasus-wow",
         "vqdev-toast",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "mabellas",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2334-rmtgm55yo6gg/www/mabellas.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:OokfOlhUTxoJs5CaoIQ9QlegXE6s1+1l2gDZbDKpe+I",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "saltcellar": {
       "name": "Salt Cellar",
@@ -85,8 +141,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1922-ox3nr6uplk2h@gvam1248.siteground.biz -p 18765",
       "remote_path": "/home/u1922-ox3nr6uplk2h/www/saltcellar.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "saltcellar_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "saltcellar_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -95,7 +156,16 @@
         "pegasus-wow",
         "vqdev-toast",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "saltcellar",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1922-ox3nr6uplk2h/www/saltcellar.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:i5lLimCaxkih/aUFQ1slBKUjkC2LnAfanRoqakONPKs",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "mixmarket": {
       "name": "The Mix Market",
@@ -105,8 +175,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1926-nm5r7lzdccbc@gvam1248.siteground.biz -p 18765",
       "remote_path": "/home/u1926-nm5r7lzdccbc/www/themixmarket.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "mixmarket_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "mixmarket_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -114,7 +189,16 @@
         "pegasus-wow",
         "vqdev-toast",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "mixmarket",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1926-nm5r7lzdccbc/www/themixmarket.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:i5lLimCaxkih/aUFQ1slBKUjkC2LnAfanRoqakONPKs",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "tommygs": {
       "name": "Tommy G's",
@@ -124,8 +208,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1929-p96clzjdofva@gvam1248.siteground.biz -p 18765",
       "remote_path": "/home/u1929-p96clzjdofva/www/tommygs.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "tommygs_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "tommygs_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -133,7 +222,16 @@
         "pegasus-wow",
         "vqdev-toast",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "tommygs",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1929-p96clzjdofva/www/tommygs.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:i5lLimCaxkih/aUFQ1slBKUjkC2LnAfanRoqakONPKs",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "sugarpeddler": {
       "name": "Sugarpeddler",
@@ -143,8 +241,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2821-kszudcgjgqwe@gvam1168.siteground.biz -p 18765",
       "remote_path": "/home/u2821-kszudcgjgqwe/www/sugarpeddler.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "sugarpeddler_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "sugarpeddler_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -152,7 +255,16 @@
         "pegasus-wow",
         "vqdev-toast",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "sugarpeddler",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2821-kszudcgjgqwe/www/sugarpeddler.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:4fSv83822/obCFNRMSbO2ns5b0+WgdtEYHLiTcOupm4",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "vqdevelopment": {
       "name": "VisionQuest Development",
@@ -162,14 +274,29 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u795-gsjmrktis7i1@ssh.visionquestdevelopment.com -p 18765",
       "remote_path": "/home/u795-gsjmrktis7i1/www/visionquestdevelopment.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "vqdev_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vqdev_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
+        "pegasus-botify",
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "visionquest",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u795-gsjmrktis7i1/www/visionquestdevelopment.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:2nRmVsduchtVFvljjyms9bXPF4drugluGSF3Pryvdv4",
+      "ssh_fingerprint_status": "pinned"
     },
     "vqdev": {
       "name": "VisionQuest Dev",
@@ -179,14 +306,27 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u137-u0edzwblljc1@ssh.visionquestdev.com -p 18765",
       "remote_path": "/home/u137-u0edzwblljc1/www/visionquestdev.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "visionquestdev_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "visionquestdev_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u137-u0edzwblljc1/www/visionquestdev.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:Z96J9B8k1GnwSZ/3PAiiwWWmol0+4oIzuuIyyqGtuo8",
+      "ssh_fingerprint_status": "pinned"
     },
     "avena": {
       "name": "Avena Family Photos",
@@ -196,14 +336,27 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2668-1czijvloaqmy@ssh.avenafamilyphotos.com -p 18765",
       "remote_path": "/home/u2668-1czijvloaqmy/www/avenafamilyphotos.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "avena_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "avena_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2668-1czijvloaqmy/www/avenafamilyphotos.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:ydi2ozgG4ZpOHaGyoFzhZO+4vZFhkN83jja5COrTBHk",
+      "ssh_fingerprint_status": "pinned"
     },
     "meowweretalkin": {
       "name": "Meow We're Talkin",
@@ -213,13 +366,26 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2373-whpzjvnzbcyl@ssh.meowweretalkin.com -p 18765",
       "remote_path": "/home/u2373-whpzjvnzbcyl/www/meowweretalkin.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "meowweretalkin_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "meowweretalkin_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2373-whpzjvnzbcyl/www/meowweretalkin.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:7BQWpyvlXbXcqtJaREm2e3h2xuphXx/CSAqxTWt3+Zc",
+      "ssh_fingerprint_status": "pinned"
     },
     "pegasustheme": {
       "name": "Pegasus Theme",
@@ -229,8 +395,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2375-bnxmykzebbol@ssh.pegasustheme.com -p 18765",
       "remote_path": "/home/u2375-bnxmykzebbol/www/pegasustheme.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "pegasustheme_child" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "pegasustheme_child",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-blog",
@@ -243,14 +414,23 @@
         "pegasus-onepage",
         "pegasus-packery",
         "pegasus-popup",
-        "pegasus-post-grid",
+        "pegasus-postgrid",
         "pegasus-posts-filter",
         "pegasus-slider",
         "pegasus-tabs",
         "pegasus-toggleslide",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "pegasustheme",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2375-bnxmykzebbol/www/pegasustheme.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:7BQWpyvlXbXcqtJaREm2e3h2xuphXx/CSAqxTWt3+Zc",
+      "ssh_fingerprint_status": "pinned"
     },
     "vqgoods": {
       "name": "VisionQuest Goods",
@@ -260,10 +440,24 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1448-xyecwpzvlm05@gvam1224.siteground.biz -p 18765",
       "remote_path": "/home/u1448-xyecwpzvlm05/www/visionquestgoods.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "vqgoods_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vqgoods_theme",
+          "branch_exists": false
+        }
       },
-      "plugins": []
+      "plugins": [],
+      "siteground": true,
+      "local_dir": "visionquestgoods",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1448-xyecwpzvlm05/www/visionquestgoods.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:PH0Eopye+5TbwsZBAp3Jn4vacWuWx8fyPUQyP/XFjjI",
+      "ssh_fingerprint_status": "pinned"
     },
     "sagescnc": {
       "name": "Sage's CNC",
@@ -273,15 +467,29 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1896-o95aamxni69r@ssh.sagescnc.com -p 18765",
       "remote_path": "/home/u1896-o95aamxni69r/www/sagescnc.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "sagescnc_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "sage_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-accordion",
         "pegasus-carousel",
         "pegasus-tabs",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "sagecnc",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1896-o95aamxni69r/www/sagescnc.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:YGakP47TwDwhNGNnYpEEe5GThm5plUahqdLnO0axwSM",
+      "ssh_fingerprint_status": "pinned"
     },
     "chrishixson": {
       "name": "Chris Hixson",
@@ -291,14 +499,27 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u869-geq9wwrhqrna@gvam1007.siteground.biz -p 18765",
       "remote_path": "/home/u869-geq9wwrhqrna/www/chrishixson.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "chrishixson_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "chrishixson_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u869-geq9wwrhqrna/www/chrishixson.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:9CViQYZDJDlDZ5vqX2AOOqQoZHje5wmxjGgpbp6xfbA",
+      "ssh_fingerprint_status": "pinned"
     },
     "qbiqcamp": {
       "name": "QBIQ Camp",
@@ -308,15 +529,29 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u3018-28ezo8zzg2yz@ssh.qbiqcamp.com -p 18765",
       "remote_path": "/home/u3018-28ezo8zzg2yz/www/qbiqcamp.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "qbiqcamp_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "qbiqcamp_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-onepage",
         "pegasus-packery",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "qbiqcamp",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u3018-28ezo8zzg2yz/www/qbiqcamp.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:jE+QzngJ7DqOhWMHyuxBn5qUe/9yMqE9pssc9ORqxZs",
+      "ssh_fingerprint_status": "pinned"
     },
     "qbiqsystem": {
       "name": "QBIQ System",
@@ -326,15 +561,29 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u436-ep3uiws3fvge@gvam1008.siteground.biz -p 18765",
       "remote_path": "/home/u436-ep3uiws3fvge/www/qbiqsystem.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "qbiqsystem_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "qbiqsystem_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "qbiqsystem",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u436-ep3uiws3fvge/www/qbiqsystem.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:+85TiMftCxA6Nv+UrsnhDCKpPQT+e77YF2iWk9eG6OQ",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "qbroundtable": {
       "name": "QB Roundtable",
@@ -344,13 +593,26 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1153-di2xlglhg6jr@ssh.qbroundtable.com -p 18765",
       "remote_path": "/home/u1153-di2xlglhg6jr/www/qbroundtable.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "qbroundtable_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "qbroundtable_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1153-di2xlglhg6jr/www/qbroundtable.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "",
+      "ssh_fingerprint_status": "missing"
     },
     "advcompany": {
       "name": "The ADV Company",
@@ -360,14 +622,27 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u592-x2l2hh9agfst@gvam1008.siteground.biz -p 18765",
       "remote_path": "/home/u592-x2l2hh9agfst/www/theadvcompany.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "advcompany_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "advcompany_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u592-x2l2hh9agfst/www/theadvcompany.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:+85TiMftCxA6Nv+UrsnhDCKpPQT+e77YF2iWk9eG6OQ",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "theshootout": {
       "name": "The Shootout",
@@ -377,14 +652,27 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u1059-lbxrgueukvoh@ssh.theshootout.camp -p 18765",
       "remote_path": "/home/u1059-lbxrgueukvoh/www/theshootout.camp/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "theshootout_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "theshootout_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u1059-lbxrgueukvoh/www/theshootout.camp/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "",
+      "ssh_fingerprint_status": "missing"
     },
     "vineandvision": {
       "name": "Vine and Vision Consulting",
@@ -394,14 +682,28 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2017-qcevdn2ytb46@ssh.vineandvisionconsulting.com -p 18765",
       "remote_path": "/home/u2017-qcevdn2ytb46/www/vineandvisionconsulting.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "vineandvision_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vineandvision_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-callout",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "vineandvision",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2017-qcevdn2ytb46/www/vineandvisionconsulting.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "",
+      "ssh_fingerprint_status": "missing"
     },
     "34oak": {
       "name": "34 Oak Contracting",
@@ -411,8 +713,13 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u3139-as2zskfuqrlw@gvam1082.siteground.biz -p 18765",
       "remote_path": "/home/u3139-as2zskfuqrlw/www/34oakcontracting.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "34oak_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "34oak_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -421,7 +728,16 @@
         "pegasus-slider",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "34oak",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u3139-as2zskfuqrlw/www/34oakcontracting.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:FMZF3IWNdJze2SDGnDYl6qNhTISdDy9l4urjtUtBe8Q",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "top100proday": {
       "name": "Top 100 Pro Day",
@@ -431,14 +747,27 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2547-1s1cfrj9bp8f@ssh.top100proday.com -p 18765",
       "remote_path": "/home/u2547-1s1cfrj9bp8f/www/top100proday.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "top100proday_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "top100proday_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "plugins_source": "sites.json (unverified)",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2547-1s1cfrj9bp8f/www/top100proday.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "",
+      "ssh_fingerprint_status": "missing"
     },
     "russelcontracting": {
       "name": "Russell Contracting",
@@ -448,10 +777,30 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2186-ihxeklzicf7p@ssh.russellcontracting.org -p 18765",
       "remote_path": "/home/u2186-ihxeklzicf7p/www/russellcontracting.org/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "russellcontracting_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "russell_theme",
+          "branch_exists": false
+        }
       },
-      "plugins": []
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-masonry",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "russelcontracting",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2186-ihxeklzicf7p/www/russellcontracting.org/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:G0rWoX5OOrR0rN+79VAdzQlHo0J0VDlX3FguvVXWPUs",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "ricecapital": {
       "name": "Rice Capital Fund",
@@ -461,12 +810,26 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u3053-bxgyinhxxknr@gvam1137.siteground.biz -p 18765",
       "remote_path": "/home/u3053-bxgyinhxxknr/www/ricecapitalfund.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "ricecapital_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "ricecapital_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "ricecapital",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u3053-bxgyinhxxknr/www/ricecapitalfund.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:4DAP3elvjV/+hsrCaZtfsUjFmv79OIfD6S93qH/bOpM",
+      "ssh_fingerprint_status": "pinned-known_hosts"
     },
     "gentwo": {
       "name": "Gen2 Automation",
@@ -476,15 +839,29 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2607-33glsnvdafav@gtxm1263.siteground.biz -p 18765",
       "remote_path": "/home/u2607-33glsnvdafav/www/gen2automation.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "gentwo_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "gentwo_theme",
+          "branch_exists": false
+        }
       },
       "plugins": [
         "pegasus-carousel",
         "pegasus-slider",
         "pegasus-wow",
         "wp-bootstrap-hooks"
-      ]
+      ],
+      "siteground": true,
+      "local_dir": "gentwo",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2607-33glsnvdafav/www/gen2automation.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "",
+      "ssh_fingerprint_status": "missing"
     },
     "osps26": {
       "name": "OSPS26",
@@ -494,12 +871,498 @@
       "ssh_command": "ssh -i ~/.ssh/ulg_siteground u899-mruelycumg2h@gtxm1338.siteground.biz -p 18765",
       "remote_path": "/home/u899-mruelycumg2h/www/osps26.com/public_html",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "osps26_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "osps26_theme",
+          "branch_exists": false
+        }
+      },
+      "plugins": [
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "osps26",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u899-mruelycumg2h/www/osps26.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:lrh1C8QqY8gBb9Rh3osKmaT6n8EZlFZl52GgfKrsVqk",
+      "ssh_fingerprint_status": "pinned-known_hosts"
+    },
+    "cadence-group": {
+      "name": "Cadence Group",
+      "domain": "cadence-group.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "cadence_group_theme",
+          "branch_exists": false
+        }
+      },
+      "plugins": [
+        "pegasus-accordion",
+        "pegasus-carousel",
+        "pegasus-postgrid",
+        "pegasus-slider",
+        "pegasus-tabs",
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "cadence-group",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "organizepluscleaning": {
+      "name": "Organize Plus Cleaning",
+      "domain": "organizepluscleaning.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "organizepluscleaning",
+          "branch_exists": false
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "organizepluscleaning",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "ourpalsplace": {
+      "name": "Our Pals Place",
+      "domain": "ourpalsplace.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "opp_new_site"
+        }
+      },
+      "plugins": [
+        "pegasus-accordion",
+        "pegasus-carousel",
+        "pegasus-popup",
+        "pegasus-slider",
+        "pegasus-toggleslide",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "ourpalsplacedbt": {
+      "name": "Our Pals Place DBT",
+      "domain": "ourpalsplacedbt.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "opp-dbt-site"
+        }
       },
       "plugins": [
         "wp-bootstrap-hooks"
       ]
+    },
+    "outlawcoffee": {
+      "name": "Outlaw Coffee Company",
+      "domain": "outlawcoffeecompany.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "outlaw_coffee_theme"
+        }
+      },
+      "plugins": [
+        "pegasus-slider",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "visionquest": {
+      "name": "VisionQuest",
+      "domain": "",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vqdev_theme"
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "theloft-old": {
+      "name": "The Loft (old)",
+      "domain": "",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "theloft"
+        }
+      },
+      "plugins": []
+    },
+    "pegasus": {
+      "name": "Pegasus (theme sandbox)",
+      "domain": "",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "master"
+        }
+      },
+      "plugins": [
+        "pegasus-blog",
+        "pegasus-callout",
+        "pegasus-carousel",
+        "pegasus-circle-progress",
+        "pegasus-countup",
+        "pegasus-masonry",
+        "pegasus-navmenu",
+        "pegasus-onepage",
+        "pegasus-packery",
+        "pegasus-popup",
+        "pegasus-postgrid",
+        "pegasus-posts-filter",
+        "pegasus-slider",
+        "pegasus-tabs",
+        "pegasus-toggleslide",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "valorcare": {
+      "name": "Valor Care",
+      "domain": "valorcarega.com",
+      "ssh_user": "u3161-8gdgsgcscocg",
+      "ssh_host": "ssh.valorcarega.com",
+      "ssh_command": "ssh -i ~/.ssh/ulg_siteground u3161-8gdgsgcscocg@ssh.valorcarega.com -p 18765",
+      "remote_path": "/home/u3161-8gdgsgcscocg/www/valorcarega.com/public_html",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "valorcare_theme",
+          "branch_exists": false
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "valorcare",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u3161-8gdgsgcscocg/www/valorcarega.com/public_html/wp-content",
+      "environment": "live",
+      "ssh_fingerprint": "SHA256:HToLgE0AS1FN7qK4AUn5sdV/rjJ71l/NlhRsOzXsJvs",
+      "ssh_fingerprint_status": "pinned-known_hosts"
+    },
+    "renecatherinedesign": {
+      "name": "Rene Catherine Design",
+      "domain": "renecatherinedesigns.com",
+      "ssh_user": "u2742-urgzibllpjue",
+      "ssh_host": "gvam1254.siteground.biz",
+      "ssh_command": "ssh -i ~/.ssh/ulg_siteground u2742-urgzibllpjue@gvam1254.siteground.biz -p 18765",
+      "remote_path": "/home/u2742-urgzibllpjue/www/renecatherinedesigns.com/public_html",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "renecdesign_theme",
+          "branch_exists": false
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "renecatherinedesign",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u2742-urgzibllpjue/www/renecatherinedesigns.com/public_html/wp-content",
+      "environment": "live",
+      "path_verified": true,
+      "ssh_fingerprint": "SHA256:mAKw3SbabzZmiay/XuDADsgzDzuTbPddq7IuzGNXCmg",
+      "ssh_fingerprint_status": "pinned-known_hosts"
+    },
+    "vqdevcom": {
+      "name": "vqdev.com",
+      "domain": "vqdev.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "",
+          "branch_exists": false
+        }
+      },
+      "plugins": [],
+      "siteground": true,
+      "plugins_source": "unknown",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "quarterbackuniverse": {
+      "name": "quarterbackuniverse.com",
+      "domain": "quarterbackuniverse.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "",
+          "branch_exists": false
+        }
+      },
+      "plugins": [],
+      "siteground": true,
+      "plugins_source": "unknown",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "qbtv": {
+      "name": "qb-tv.com",
+      "domain": "qb-tv.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "",
+          "branch_exists": false
+        }
+      },
+      "plugins": [],
+      "siteground": true,
+      "plugins_source": "unknown",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "righthandrenovations": {
+      "name": "righthandrenovations.com",
+      "domain": "righthandrenovations.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "righthandrenovations",
+          "branch_exists": false
+        }
+      },
+      "plugins": [],
+      "siteground": true,
+      "plugins_source": "unknown",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "mamakay": {
+      "name": "mamakayscheesecakes.com",
+      "domain": "mamakayscheesecakes.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "",
+          "branch_exists": false
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ],
+      "siteground": true,
+      "local_dir": "mamakay",
+      "plugins_source": "local-vvv",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "networkingnorth": {
+      "name": "networkingnorth.com",
+      "domain": "networkingnorth.com",
+      "ssh_user": "",
+      "ssh_host": "",
+      "ssh_command": "",
+      "remote_path": "",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "",
+          "branch_exists": false
+        }
+      },
+      "plugins": [],
+      "siteground": true,
+      "plugins_source": "unknown",
+      "ssh_port": 18765,
+      "deploy_key_status": "unknown",
+      "environment": "live"
+    },
+    "qbiqsystem-staging": {
+      "name": "qbiqsystem.com/test (staged at chrishixson.com/test)",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "qbiqsystem_theme",
+          "branch_exists": false
+        }
+      },
+      "domain": "qbiqsystem.com/test (staged at chrishixson.com/test)",
+      "environment": "staging",
+      "parent_site": "chrishixson",
+      "siteground": true,
+      "local_dir": "qbiqsystem",
+      "ssh_user": "u869-geq9wwrhqrna",
+      "ssh_host": "gvam1007.siteground.biz",
+      "ssh_command": "ssh -i ~/.ssh/ulg_siteground u869-geq9wwrhqrna@gvam1007.siteground.biz -p 18765",
+      "remote_path": "/home/u869-geq9wwrhqrna/www/chrishixson.com/public_html/test",
+      "ssh_port": 18765,
+      "path_verified": false,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u869-geq9wwrhqrna/www/chrishixson.com/public_html/test/wp-content",
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ],
+      "plugins_source": "local-vvv",
+      "ssh_fingerprint": "SHA256:9CViQYZDJDlDZ5vqX2AOOqQoZHje5wmxjGgpbp6xfbA",
+      "ssh_fingerprint_status": "pinned"
+    },
+    "hfhs-staging": {
+      "name": "visionquestdev.com/hfhsga",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "hfhsga_theme",
+          "branch_exists": false
+        }
+      },
+      "domain": "visionquestdev.com/hfhsga",
+      "environment": "staging",
+      "parent_site": "vqdev",
+      "siteground": true,
+      "local_dir": "hfhsga",
+      "ssh_user": "u137-u0edzwblljc1",
+      "ssh_host": "ssh.visionquestdev.com",
+      "ssh_command": "ssh -i ~/.ssh/ulg_siteground u137-u0edzwblljc1@ssh.visionquestdev.com -p 18765",
+      "remote_path": "/home/u137-u0edzwblljc1/www/visionquestdev.com/public_html/hfhsga",
+      "ssh_port": 18765,
+      "path_verified": true,
+      "deploy_key_status": "unknown",
+      "wp_content": "/home/u137-u0edzwblljc1/www/visionquestdev.com/public_html/hfhsga/wp-content",
+      "plugins": [
+        "pegasus-accordion",
+        "pegasus-carousel",
+        "pegasus-slider",
+        "pegasus-wow",
+        "wp-bootstrap-hooks"
+      ],
+      "plugins_source": "local-vvv",
+      "ssh_fingerprint": "SHA256:Z96J9B8k1GnwSZ/3PAiiwWWmol0+4oIzuuIyyqGtuo8",
+      "ssh_fingerprint_status": "pinned"
     }
   }
 }

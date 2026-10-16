@@ -125,11 +125,17 @@ get_plugins() {
 # SSH Functions
 # =============================================================================
 
+# Per-site SSH port from sites.json (registry), falling back to SSH_PORT from .env
+site_port() {
+    local p=$(get_site_field "$1" "ssh_port")
+    echo "${p:-$SSH_PORT}"
+}
+
 ssh_cmd() {
     local site="$1"
     local ssh_user=$(get_site_field "$site" "ssh_user")
     local ssh_host=$(get_site_field "$site" "ssh_host")
-    ssh -i "$SSH_KEY_PATH" -p "$SSH_PORT" "$ssh_user@$ssh_host"
+    ssh -i "$SSH_KEY_PATH" -p "$(site_port "$site")" "$ssh_user@$ssh_host"
 }
 
 run_remote() {
@@ -137,7 +143,7 @@ run_remote() {
     local command="$2"
     local ssh_user=$(get_site_field "$site" "ssh_user")
     local ssh_host=$(get_site_field "$site" "ssh_host")
-    ssh -i "$SSH_KEY_PATH" -p "$SSH_PORT" "$ssh_user@$ssh_host" "$command"
+    ssh -i "$SSH_KEY_PATH" -p "$(site_port "$site")" "$ssh_user@$ssh_host" "$command"
 }
 
 test_connection() {
@@ -147,7 +153,7 @@ test_connection() {
 
     print_info "Testing connection to $site..."
 
-    local output=$(ssh -i "$SSH_KEY_PATH" -p "$SSH_PORT" -o ConnectTimeout=10 -o BatchMode=yes "$ssh_user@$ssh_host" "echo 'ok'" 2>&1)
+    local output=$(ssh -i "$SSH_KEY_PATH" -p "$(site_port "$site")" -o ConnectTimeout=10 -o BatchMode=yes "$ssh_user@$ssh_host" "echo 'ok'" 2>&1)
     local status=$?
 
     if [ $status -eq 0 ]; then
@@ -155,7 +161,7 @@ test_connection() {
         return 0
     else
         print_error "Could not connect to $site"
-        log_info "SSH: $ssh_user@$ssh_host:$SSH_PORT"
+        log_info "SSH: $ssh_user@$ssh_host:$(site_port "$site")"
         log_output "$output"
         return 1
     fi

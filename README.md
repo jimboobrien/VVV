@@ -29,3 +29,10 @@ The online documentation contains more detailed [installation instructions](http
 ## Software included
 
 For a comprehensive list, please see the [list of installed packages](https://varyingvagrantvagrants.org/docs/en-US/installed-packages/).
+
+## SiteGround auto-deploy (GitHub Actions)
+
+Pushing to `pegasus` or a `pegasus-*` plugin (default branch), or to a pegasus-child site branch, runs `git pull --ff-only` on the matching SiteGround sites.
+- Registry: `sync/sites.json` → `python3 sync/build-deploy-registry.py` → `sync/deploy-registry.json` → vendored as `.github/deploy/sites.json` in each repo (+ per-repo workflows rendered to `sync/deploy-workflow/out/`)
+- Roll the workflow out to site branches with `sync/apply-deploy-workflow-to-child-branches.sh [--push]`
+- Secrets (org secrets limited to the 20 pegasus repos; no GitHub Environments), the per-server checklist, staging sites and how to add a site: see `DEPLOY-SITEGROUND.md`

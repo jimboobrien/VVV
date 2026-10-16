@@ -109,9 +109,10 @@ get_behind_count() {
         fi
     fi
 
-    # Try origin/master as last resort
-    if cd "$path" && git rev-parse --verify "origin/master" >/dev/null 2>&1; then
-        ahead_behind=$(cd "$path" && git rev-list --left-right --count origin/master...HEAD 2>/dev/null)
+    # Try the remote default branch (origin/HEAD -> master or main) as last resort
+    local remote_default=$(cd "$path" && git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null)
+    if [ -n "$remote_default" ] && cd "$path" && git rev-parse --verify "$remote_default" >/dev/null 2>&1; then
+        ahead_behind=$(cd "$path" && git rev-list --left-right --count "$remote_default"...HEAD 2>/dev/null)
         if [ -n "$ahead_behind" ]; then
             echo "$ahead_behind"
             return 0
@@ -144,6 +145,12 @@ check_repo_status() {
     if [ "$DO_FETCH" = "true" ]; then
         print_info "Fetching..."
         (cd "$path" && git fetch --quiet 2>/dev/null)
+    fi
+
+    # Empty expected branch = the repo's default branch (origin/HEAD), so master->main renames just work
+    if [ -z "$expected_branch" ]; then
+        expected_branch=$(cd "$path" && git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's@^origin/@@')
+        [ -z "$expected_branch" ] && expected_branch=$(cd "$path" && git show-ref -q refs/remotes/origin/main && echo main || echo master)
     fi
 
     # Get current branch
@@ -230,7 +237,7 @@ check_site() {
     print_subheader "Plugins"
     for plugin in $(get_plugins "$site"); do
         local plugin_path="$site_path/public_html/wp-content/plugins/$plugin"
-        check_repo_status "$plugin_path" "$plugin" "master"
+        check_repo_status "$plugin_path" "$plugin" ""
     done
 }
 

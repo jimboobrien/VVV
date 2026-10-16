@@ -153,6 +153,17 @@ cd /home/jim/Projects/vagrant-local/sync/
 
 ---
 
+
+### Auto-deploy registry (GitHub Actions)
+
+```bash
+cd ~/Projects/vagrant-local/sync
+python3 build-deploy-registry.py --child-branches "$(git ls-remote --heads git@github.com:Visionquest-Development/pegasus-child.git | sed 's|.*refs/heads/||' | tr '\n' ' ')"
+./apply-deploy-workflow-to-child-branches.sh            # dry run
+./apply-deploy-workflow-to-child-branches.sh --push     # push workflow to every site branch (deploys!)
+```
+See DEPLOY-SITEGROUND.md for secrets and the server checklist.
+
 ## Vagrant & VVV Core Commands
 
 ### Vagrant Operations

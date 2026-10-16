@@ -87,3 +87,9 @@ vagrant.log
 # Sync folder sensitive files
 /sync/.env
 /sync/*.log
+**/.env
+*.pem
+*.key
+id_rsa*
+id_ed25519*
+*.token

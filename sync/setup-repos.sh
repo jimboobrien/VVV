@@ -169,9 +169,10 @@ clone_repo() {
         rm -rf "$target_path"
     fi
 
-    # Clone with specific branch
-    if git clone -b "$branch" "$repo_url" "$target_path" 2>&1; then
-        print_success "Cloned $name (branch: $branch)"
+    # Clone with specific branch (empty = the repo's GitHub default branch, master or main)
+    local bopt=(); [ -n "$branch" ] && bopt=(-b "$branch")
+    if git clone "${bopt[@]}" "$repo_url" "$target_path" 2>&1; then
+        print_success "Cloned $name (branch: ${branch:-default})"
         return 0
     else
         print_error "Failed to clone $name"
@@ -266,16 +267,16 @@ check_plugin() {
     if [ -d "$plugin_path" ]; then
         print_warning "  Exists but NOT a git repo"
         if [ "$DRY_RUN" = "true" ]; then
-            print_info "  Would clone: ${PLUGIN_REPOS[$plugin]} (branch: master)"
+            print_info "  Would clone: ${PLUGIN_REPOS[$plugin]} (branch: default)"
         else
-            clone_repo "${PLUGIN_REPOS[$plugin]}" "$plugin_path" "master" "$plugin"
+            clone_repo "${PLUGIN_REPOS[$plugin]}" "$plugin_path" "" "$plugin"
         fi
     else
         print_warning "  Does not exist"
         if [ "$DRY_RUN" = "true" ]; then
-            print_info "  Would clone: ${PLUGIN_REPOS[$plugin]} (branch: master)"
+            print_info "  Would clone: ${PLUGIN_REPOS[$plugin]} (branch: default)"
         else
-            clone_repo "${PLUGIN_REPOS[$plugin]}" "$plugin_path" "master" "$plugin"
+            clone_repo "${PLUGIN_REPOS[$plugin]}" "$plugin_path" "" "$plugin"
         fi
     fi
 }

@@ -4,8 +4,12 @@
       "name": "ULG Website",
       "local_dir": "uptownlifegroup",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "ulg_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "ulg_theme"
+        }
       },
       "plugins": [
         "pegasus-accordion",
@@ -20,8 +24,12 @@
       "name": "ULG Events",
       "local_dir": "ulgevents",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "ulg_events_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "ulg_events_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -34,8 +42,12 @@
       "name": "The Loft",
       "local_dir": "theloftnew",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "theloft2025_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "theloft2025_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -50,8 +62,12 @@
       "name": "Mabellas",
       "local_dir": "mabellas",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "mabellas_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "mabellas_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -65,8 +81,12 @@
       "name": "Salt Cellar",
       "local_dir": "saltcellar",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "saltcellar_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "saltcellar_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -81,8 +101,12 @@
       "name": "The Mix Market",
       "local_dir": "mixmarket",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "mixmarket_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "mixmarket_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -96,8 +120,12 @@
       "name": "Tommy G's",
       "local_dir": "tommygs",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "tommygs_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "tommygs_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -111,8 +139,12 @@
       "name": "Sugarpeddler",
       "local_dir": "sugarpeddler",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "sugarpeddler_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "sugarpeddler_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -126,8 +158,12 @@
       "name": "Pegasus Theme",
       "local_dir": "pegasustheme",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "pegasustheme_child" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "pegasustheme_child"
+        }
       },
       "plugins": [
         "pegasus-blog",
@@ -153,8 +189,12 @@
       "name": "VisionQuest Goods",
       "local_dir": "visionquestgoods",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "vqgoods_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vqgoods_theme"
+        }
       },
       "plugins": []
     },
@@ -162,8 +202,12 @@
       "name": "Sage's CNC",
       "local_dir": "sagecnc",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "sagescnc_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "sagescnc_theme"
+        }
       },
       "plugins": [
         "pegasus-accordion",
@@ -176,8 +220,12 @@
       "name": "QBIQ Camp",
       "local_dir": "qbiqcamp",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "qbiqcamp_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "qbiqcamp_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -190,8 +238,12 @@
       "name": "QBIQ System",
       "local_dir": "qbiqsystem",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "qbiqsystem_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "qbiqsystem_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -204,8 +256,12 @@
       "name": "Vine and Vision Consulting",
       "local_dir": "vineandvision",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "vineandvision_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vineandvision_theme"
+        }
       },
       "plugins": [
         "pegasus-callout",
@@ -217,8 +273,12 @@
       "name": "34 Oak Contracting",
       "local_dir": "34oak",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "34oak_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "34oak_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -233,8 +293,12 @@
       "name": "Russell Contracting",
       "local_dir": "russelcontracting",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "russellcontracting_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "russellcontracting_theme"
+        }
       },
       "plugins": []
     },
@@ -242,8 +306,12 @@
       "name": "Rice Capital Fund",
       "local_dir": "ricecapital",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "ricecapital_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "ricecapital_theme"
+        }
       },
       "plugins": [
         "wp-bootstrap-hooks"
@@ -253,8 +321,12 @@
       "name": "Gen2 Automation",
       "local_dir": "gentwo",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "gentwo_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "gentwo_theme"
+        }
       },
       "plugins": [
         "pegasus-carousel",
@@ -267,10 +339,162 @@
       "name": "OSPS26",
       "local_dir": "osps26",
       "themes": {
-        "pegasus": { "branch": "master" },
-        "pegasus-child": { "branch": "osps26_theme" }
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "osps26_theme"
+        }
       },
       "plugins": [
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "cadence-group": {
+      "name": "Cadence Group",
+      "local_dir": "cadence-group",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "cadence_group_theme"
+        }
+      },
+      "plugins": [
+        "pegasus-accordion",
+        "pegasus-carousel",
+        "pegasus-postgrid",
+        "pegasus-slider",
+        "pegasus-tabs",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "organizepluscleaning": {
+      "name": "Organize Plus Cleaning",
+      "local_dir": "organizepluscleaning",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "organizepluscleaning"
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "ourpalsplace": {
+      "name": "Our Pals Place",
+      "local_dir": "ourpalsplace",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "opp_new_site"
+        }
+      },
+      "plugins": [
+        "pegasus-accordion",
+        "pegasus-carousel",
+        "pegasus-popup",
+        "pegasus-slider",
+        "pegasus-toggleslide",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "ourpalsplacedbt": {
+      "name": "Our Pals Place DBT",
+      "local_dir": "ourpalsplacedbt",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "opp-dbt-site"
+        }
+      },
+      "plugins": [
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "outlawcoffee": {
+      "name": "Outlaw Coffee Company",
+      "local_dir": "outlawcoffee",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "outlaw_coffee_theme"
+        }
+      },
+      "plugins": [
+        "pegasus-slider",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "visionquest": {
+      "name": "VisionQuest",
+      "local_dir": "visionquest",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "vqdev_theme"
+        }
+      },
+      "plugins": [
+        "pegasus-carousel",
+        "pegasus-slider",
+        "wp-bootstrap-hooks"
+      ]
+    },
+    "theloft-old": {
+      "name": "The Loft (old)",
+      "local_dir": "theloft",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "theloft"
+        }
+      },
+      "plugins": []
+    },
+    "pegasus": {
+      "name": "Pegasus (theme sandbox)",
+      "local_dir": "pegasus",
+      "themes": {
+        "pegasus": {
+          "branch": "master"
+        },
+        "pegasus-child": {
+          "branch": "master"
+        }
+      },
+      "plugins": [
+        "pegasus-blog",
+        "pegasus-callout",
+        "pegasus-carousel",
+        "pegasus-circle-progress",
+        "pegasus-countup",
+        "pegasus-masonry",
+        "pegasus-navmenu",
+        "pegasus-onepage",
+        "pegasus-packery",
+        "pegasus-popup",
+        "pegasus-postgrid",
+        "pegasus-posts-filter",
+        "pegasus-slider",
+        "pegasus-tabs",
+        "pegasus-toggleslide",
+        "pegasus-wow",
         "wp-bootstrap-hooks"
       ]
     }

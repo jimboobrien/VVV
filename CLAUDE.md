@@ -102,3 +102,9 @@ This is a VVV (Varying Vagrant Vagrants) local development environment, primaril
 - **Vagrant triggers**: Defined in `Vagrantfile` for up/halt/suspend/destroy events
 - **Service configs**: `config/php-config/`, `config/wordpress-config/`, `config/wp-cli/`
 - **Site logs**: `www/[site-name]/log/`
+## SiteGround auto-deploy (GitHub Actions)
+
+Pushing to `pegasus` or a `pegasus-*` plugin (default branch), or to a pegasus-child site branch, runs `git pull --ff-only` on the matching SiteGround sites.
+- Registry: `sync/sites.json` → `python3 sync/build-deploy-registry.py` → `sync/deploy-registry.json` → vendored as `.github/deploy/sites.json` in each repo (+ per-repo workflows rendered to `sync/deploy-workflow/out/`)
+- Roll the workflow out to site branches with `sync/apply-deploy-workflow-to-child-branches.sh [--push]`
+- Secrets (org secrets limited to the 20 pegasus repos; no GitHub Environments), the per-server checklist, staging sites and how to add a site: see `DEPLOY-SITEGROUND.md`

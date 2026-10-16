@@ -40,6 +40,7 @@ app.get('/', (req, res) => {
         <h2>Available Pages:</h2>
         <a href="/commands" class="nav-link commands">Commands & Repository Guide</a>
         <a href="/repo-status" class="nav-link">Repository Status</a>
+        <a href="/pegasus-status" class="nav-link">Pegasus Status (2026-10-12)</a>
       </div>
     </body>
     </html>
@@ -854,6 +855,21 @@ function extractWordPressFolders(commandsData) {
     .filter(site => site.general.length > 0 || site.themes.length > 0 || site.plugins.length > 0)
     .sort((a, b) => a.name.localeCompare(b.name));
 }
+
+
+// Pegasus audit table (2026-10-12)
+app.get('/pegasus-status', (req, res) => {
+  try {
+    const d = JSON.parse(fs.readFileSync('repo-status-pegasus-2026-10-12.json', 'utf8'));
+    const esc = s => String(s ?? '').replace(/[&<>]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+    const color = s => (s === 'Up to date' || s === 'Site branch: up to date') ? '#d4edda' : /needs pull/i.test(s) ? '#fff3cd' : (s.includes('expected') || s.includes('no upstream')) ? '#e2e3e5' : '#f8d7da';
+    const counts = Object.entries(d.counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<tr><td>${esc(k)}</td><td>${v}</td></tr>`).join('');
+    let archived = '<p>No manifest.</p>';
+    try { const m = fs.readFileSync('old-archive/MANIFEST.md','utf8').split('\n').filter(l=>l.startsWith('| ') && !l.startsWith('| Original')); archived = '<table><tr><th>Original path</th><th>Archived to</th></tr>' + m.map(l=>{const c=l.split('|').map(x=>x.trim()); return `<tr><td>${esc(c[1])}</td><td>${esc(c[2])}</td></tr>`}).join('') + '</table>'; } catch(e) {}
+    const rows = d.rows.map(r => `<tr style="background:${color(r.status)}"><td>${esc(r.site)}</td><td>${esc(r.component)}</td><td>${esc(r.path)}</td><td>${esc(r.remote)}</td><td>${esc(r.branch)}</td><td>${esc(r.on_default)}</td><td><code>${esc(r.commit)}</code> ${esc((r.commit_date||'').slice(0,16))}</td><td><code>${esc(r.remote_head)}</code></td><td>${esc(r.ahead)}/${esc(r.behind)}</td><td>${esc(r.dirty)}</td><td>${esc(r.branch_gone)}</td><td>${esc(r.status)}</td></tr>`).join('');
+    res.send(`<!doctype html><html><head><title>Pegasus repo status</title><style>body{font-family:sans-serif;margin:20px}table{border-collapse:collapse;font-size:13px}td,th{border:1px solid #ccc;padding:3px 6px}</style></head><body><a href="/">Home</a><h1>Pegasus / wp-bootstrap-hooks / vqdev-toast status</h1><p>Scanned: <b id="scan-date">${esc(d.scan_date)}</b> (git fetch per copy)</p><h2>Summary (${d.rows.length} copies)</h2><table><tr><th>Status</th><th>Count</th></tr>${counts}</table><h2>wp-bootstrap-hooks fork status</h2><table><tr><th>Site</th><th>Remote</th><th>Branch</th><th>Behind</th><th>Status</th></tr>${d.rows.filter(r=>r.component==='wp-bootstrap-hooks').map(r=>`<tr style="background:${r.remote.includes('jimboobrien')&&r.status==='Up to date'?'#d4edda':'#f8d7da'}"><td>${esc(r.site)}</td><td>${esc(r.remote)}</td><td>${esc(r.branch)}</td><td>${esc(r.behind)}</td><td>${esc(r.status)}</td></tr>`).join('')}</table><h2>Archived old folders</h2>${archived}<h2>All copies</h2><table><tr><th>Site</th><th>Component</th><th>Path</th><th>Remote</th><th>Branch</th><th>On default</th><th>Commit</th><th>Origin</th><th>Ahead/Behind</th><th>Dirty</th><th>Branch gone</th><th>Status</th></tr>${rows}</table></body></html>`);
+  } catch (e) { res.status(500).send('Error loading repo-status-pegasus-2026-10-12.json'); }
+});
 
 const server = app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
