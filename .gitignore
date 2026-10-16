@@ -93,3 +93,6 @@ vagrant.log
 id_rsa*
 id_ed25519*
 *.token
+
+# Local backups and old logs (see backups/MANIFEST.md)
+/backups/

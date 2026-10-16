@@ -105,6 +105,6 @@ This is a VVV (Varying Vagrant Vagrants) local development environment, primaril
 ## SiteGround auto-deploy (GitHub Actions)
 
 Pushing to `pegasus` or a `pegasus-*` plugin (default branch), or to a pegasus-child site branch, runs `git pull --ff-only` on the matching SiteGround sites.
-- Registry: `sync/sites.json` → `python3 sync/build-deploy-registry.py` → `sync/deploy-registry.json` → vendored as `.github/deploy/sites.json` in each repo (+ per-repo workflows rendered to `sync/deploy-workflow/out/`)
-- Roll the workflow out to site branches with `sync/apply-deploy-workflow-to-child-branches.sh [--push]`
+- Registry: `sync/sites.json` → `sync/pegasus.sh registry` → `sync/deploy-registry.json` → vendored as `.github/deploy/sites.json` in each repo (+ per-repo workflows via `sync/pegasus.sh workflow render|apply`)
+- Roll the workflow out to site branches with `sync/pegasus.sh rollout-child [--push]`
 - Secrets (org secrets limited to the 20 pegasus repos; no GitHub Environments), the per-server checklist, staging sites and how to add a site: see `DEPLOY-SITEGROUND.md`

@@ -15,7 +15,7 @@ MAGENTA='\033[0;35m'
 NC='\033[0m'
 
 # Script directory
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 VVV_ROOT="$(dirname "$SCRIPT_DIR")"
 CONFIG_FILE="$SCRIPT_DIR/repos.json"
 WWW_DIR="$VVV_ROOT/www"

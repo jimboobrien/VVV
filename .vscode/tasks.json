@@ -5,6 +5,42 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"label": "Pegasus: rebuild deploy registry",
+			"type": "shell",
+			"command": "sync/pegasus.sh registry --child-branches auto",
+			"options": { "cwd": "${workspaceFolder}" },
+			"group": "pegasus",
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Pegasus: workflow apply (dry run)",
+			"type": "shell",
+			"command": "sync/pegasus.sh workflow apply",
+			"options": { "cwd": "${workspaceFolder}" },
+			"group": "pegasus",
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Pegasus: rollout to child branches (dry run)",
+			"type": "shell",
+			"command": "sync/pegasus.sh rollout-child",
+			"options": { "cwd": "${workspaceFolder}" },
+			"group": "pegasus",
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
+			"label": "Pegasus: rescan status",
+			"type": "shell",
+			"command": "sync/pegasus.sh status",
+			"options": { "cwd": "${workspaceFolder}" },
+			"group": "pegasus",
+			"presentation": { "reveal": "always", "panel": "new" },
+			"problemMatcher": []
+		},
+		{
 			"label": "VVV up/on",
 			"type": "shell",
 			"command": "vagrant up",

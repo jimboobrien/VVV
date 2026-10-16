@@ -1,153 +1,45 @@
-# Git Deploy Script
+# sync/ — Pegasus / SiteGround tooling
 
-Deploy WordPress themes and plugins to SiteGround hosting via SSH + git pull.
-
-## Setup
-
-1. Ensure your SSH key is set up at `~/.ssh/ulg_siteground`
-2. Configure `.env` with your SSH credentials (already created)
-3. Make sure `jq` is installed: `sudo apt install jq`
-
-## Files
+Deploys run on GitHub Actions (see `../DEPLOY-SITEGROUND.md`). This folder holds the registry and the tools that maintain it.
+Everything goes through one entry point, `sync/pegasus.sh`.
 
 | File | Purpose |
 |------|---------|
-| `deploy.sh` | Main deployment script |
-| `sites.json` | Site configurations (SSH, paths, themes, plugins) |
-| `.env` | SSH credentials (not committed to git) |
-| `deploy.log` | Error log (not committed to git) |
+| `pegasus.sh` | Entry point (subcommands below) |
+| `sites.json` | **Source of truth**: sites, SSH host/user/path, host-key fingerprints, child branches |
+| `repos.json` | Local VVV repo map (used by `status vvv`) |
+| `deploy-registry.json` | Generated registry; vendored as `.github/deploy/sites.json` in each pegasus repo. Don't edit by hand |
+| `deploy-siteground.template.yml` | Workflow template (`#BRANCHES#`, `#DEPLOY_SCRIPT#` placeholders) |
+| `remote-deploy.sh` | Server-side script inlined into the workflow |
+| `migrate-default-branch-to-main.sh` | One-off master→main rename helper (GitHub, local, `--servers`) |
+| `lib/build_registry.py` | Registry builder + workflow render/apply |
+| `lib/rescan_status.py` | Rescans local pegasus copies → `/pegasus-status` data |
+| `lib/rollout_child.sh` | Copies pegasus-child's default-branch workflow onto site branches |
+| `lib/git_status.sh`, `lib/setup_repos.sh` | Local VVV status view; clone missing repos |
 
-## Usage
-
-### Interactive Mode
-
-```bash
-./deploy.sh
-```
-
-This launches an interactive menu:
-1. Select a site from the list
-2. Choose what to update:
-   - Child theme only
-   - Parent theme only
-   - All themes
-   - All plugins
-   - Specific plugin
-   - Everything
-
-### CLI Mode
+## Commands
 
 ```bash
-# List all configured sites
-./deploy.sh list
-
-# Pull child theme
-./deploy.sh pull <site> child
-
-# Pull parent theme
-./deploy.sh pull <site> parent
-
-# Pull all themes
-./deploy.sh pull <site> themes
-
-# Pull all plugins
-./deploy.sh pull <site> plugins
-
-# Pull everything
-./deploy.sh pull <site> all
-
-# Pull specific plugin
-./deploy.sh pull <site> plugin <plugin-name>
+sync/pegasus.sh registry --child-branches auto                 # rebuild deploy-registry.json (+ sites.json, repos.json)
+sync/pegasus.sh registry --child-branches auto --refresh-fingerprints   # keyscans SiteGround, 5s apart
+sync/pegasus.sh registry --refresh-fingerprints --known-hosts-only       # no network; pins only hosts in ~/.ssh/known_hosts
+sync/pegasus.sh workflow render pegasus-child                   # print a repo's workflow (stdout only)
+sync/pegasus.sh workflow apply [repo..]                         # dry run: which repos need workflow/registry updates
+sync/pegasus.sh workflow apply --push [repo..]                  # push chore/sync-deploy-workflow-<date> per repo; open the PRs yourself
+sync/pegasus.sh rollout-child [--push] [branch..]               # site-branch rollout (each push deploys that site!)
+sync/pegasus.sh status                                          # fetch + rescan local pegasus copies (/pegasus-status)
+sync/pegasus.sh status vvv                                      # old git-status view of VVV repos
+sync/pegasus.sh setup                                           # clone missing theme/plugin repos into VVV
 ```
 
-### Examples
-
-```bash
-./deploy.sh pull ulg child                    # Update ULG child theme
-./deploy.sh pull theloft plugins              # Update all Loft plugins
-./deploy.sh pull mabellas all                 # Update everything on Mabellas
-./deploy.sh pull ulg plugin pegasus-carousel  # Update specific plugin
-```
-
-## Configured Sites
-
-| Key | Site | Domain | Child Theme Branch |
-|-----|------|--------|-------------------|
-| `ulg` | ULG Website | uptownlifegroup.com | `ulg_theme` |
-| `ulg-events` | ULG Events | events.uptownlifegroup.com | `ulg_events_theme` |
-| `theloft` | The Loft | theloft.com | `theloft2025_theme` |
-| `mabellas` | Mabellas | mabellas.com | `mabellas_theme` |
-| `saltcellar` | Salt Cellar | saltcellar.com | `saltcellar_theme` |
-| `mixmarket` | The Mix Market | themixmarket.com | `mixmarket_theme` |
-| `tommygs` | Tommy Gs | tommygs.com | `tommygs_theme` |
-
-## Workflow
-
-1. Make changes locally in VVV
-2. Commit and push to GitHub:
-   ```bash
-   git add . && git commit -m "your changes" && git push
-   ```
-3. Run deploy script to pull changes on production:
-   ```bash
-   ./deploy.sh pull ulg child
-   ```
-
-## Error Logging
-
-Errors are logged to `deploy.log` with timestamps. Check this file if something fails:
-
-```bash
-cat deploy.log
-tail -20 deploy.log  # Last 20 lines
-```
-
-Log entries include:
-- Timestamp
-- Error type (ERROR, WARNING, INFO)
-- Relevant details (SSH connection info, paths)
-- Command output for failed operations
-
-## Adding a New Site
-
-Edit `sites.json` and add a new entry under `sites`:
-
-```json
-"new-site": {
-  "name": "New Site",
-  "domain": "newsite.com",
-  "ssh_user": "uXXXX-username",
-  "ssh_host": "gvamXXXX.siteground.biz",
-  "remote_path": "/home/uXXXX-username/www/newsite.com/public_html",
-  "themes": {
-    "pegasus": { "branch": "master" },
-    "pegasus-child": { "branch": "newsite_theme" }
-  },
-  "plugins": [
-    "pegasus-carousel",
-    "wp-bootstrap-hooks"
-  ]
-}
-```
-
-## Troubleshooting
-
-**Connection failed:**
-- Check SSH key exists at path in `.env`
-- Verify SSH key is added to SiteGround
-- Check passphrase is correct
-
-**Not a git repository:**
-- The theme/plugin folder doesn't have `.git` directory
-- Clone the repo on the remote server first
-
-**Git pull failed:**
-- Check `deploy.log` for details
-- Common issues: merge conflicts, uncommitted changes on remote
+Notes:
+- `workflow apply` never pushes a default branch. `rollout-child` pushes site branches, and site branches auto-deploy.
+- `--known-hosts-only` replaces stored pins with what's in your known_hosts and blanks hosts that aren't there. Review `git diff sync/deploy-registry.json` before committing.
+- The old manual SSH deploy (`deploy.sh` + `.env`) is retired and lives in `../backups/sync/` (git-ignored) for emergencies.
 
 ## SiteGround auto-deploy (GitHub Actions)
 
 Pushing to `pegasus` or a `pegasus-*` plugin (default branch), or to a pegasus-child site branch, runs `git pull --ff-only` on the matching SiteGround sites.
-- Registry: `sync/sites.json` → `python3 sync/build-deploy-registry.py` → `sync/deploy-registry.json` → vendored as `.github/deploy/sites.json` in each repo (+ per-repo workflows rendered to `sync/deploy-workflow/out/`)
-- Roll the workflow out to site branches with `sync/apply-deploy-workflow-to-child-branches.sh [--push]`
-- Secrets (org secrets limited to the 20 pegasus repos; no GitHub Environments), the per-server checklist, staging sites and how to add a site: see `DEPLOY-SITEGROUND.md`
+- Registry: `sync/sites.json` → `sync/pegasus.sh registry` → `sync/deploy-registry.json` → vendored as `.github/deploy/sites.json` in each repo (+ per-repo workflows via `sync/pegasus.sh workflow render|apply`)
+- Roll the workflow out to site branches with `sync/pegasus.sh rollout-child [--push]`
+- Secrets, the per-server checklist, staging sites and how to add a site: see `DEPLOY-SITEGROUND.md`

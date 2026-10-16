@@ -6,13 +6,13 @@ Last updated 2026-10-12. When code is pushed to GitHub, the affected live (or st
 
 ```
 vagrant-local/sync/sites.json            <- central registry (edit this)
-        |  python3 sync/build-deploy-registry.py --child-branches "$(git ls-remote --heads git@github.com:Visionquest-Development/pegasus-child.git | sed 's|.*refs/heads/||' | tr '\n' ' ')"
+        |  sync/pegasus.sh registry --child-branches auto
         v
 vagrant-local/sync/deploy-registry.json  <- generated, trimmed copy
         |  copy to .github/deploy/sites.json in each repo (via PRs); also renders per-repo workflows
         v
 .github/deploy/sites.json vendored in every repo (pegasus-child reads its master copy via actions/checkout)
-        +  sync/deploy-workflow/out/<repo>.yml rendered from deploy-workflow/deploy-siteground.template.yml + remote-deploy.sh
+        +  sync/pegasus.sh workflow render <repo> (sync/deploy-siteground.template.yml + sync/remote-deploy.sh; stdout only)
 ```
 
 There is one identical workflow file, `.github/workflows/deploy-siteground.yml`, in each of these repos:
@@ -41,11 +41,11 @@ Manual runs: Actions → "Deploy to SiteGround" → Run workflow. Set `only_site
 ## Security hardening (2026-10-12, after Bugbot and Security Reviewer findings on pegasus-child#4)
 
 - **Push allowlist:**
-  - pegasus-child `on.push.branches` lists only the mapped site branches (31 today). `build-deploy-registry.py` regenerates the list into `sync/deploy-workflow/out/pegasus-child.yml`.
+  - pegasus-child `on.push.branches` lists only the mapped site branches (31 today). `sync/lib/build_registry.py` regenerates the list into the rendered workflow (`sync/pegasus.sh workflow render pegasus-child`).
   - pegasus and the plugin repos allow only their default branch: `master`, or `main` for accordion and botify.
 - **Permissions:** `permissions: contents: read`.
 - **No GitHub Environments:** Jim decided against them. Secrets are organization secrets visible only to the 20 pegasus repos.
-- **No templating into remote bash:** values reach the server script (`sync/deploy-workflow/remote-deploy.sh`) only as env vars via `appleboy/ssh-action` `envs:`.
+- **No templating into remote bash:** values reach the server script (`sync/remote-deploy.sh`) only as env vars via `appleboy/ssh-action` `envs:`.
 - **Input validation:** the plan step drops, with a `::warning`, any entry failing these checks:
   - branch `^[A-Za-z0-9._/-]+$`
   - wp_content `^/home/<user>/www/<domain>/public_html(/sub)*/wp-content$`
@@ -55,7 +55,7 @@ Manual runs: Actions → "Deploy to SiteGround" → Run workflow. Set `only_site
   - user `^[A-Za-z0-9._-]+$`
   - port numeric
 - **Pinned registry:** I chose to vendor it rather than pin a SHA. Each plugin/theme repo reads `.github/deploy/sites.json` from the commit being deployed, so a registry change has to go through that repo's own review. pegasus-child reads its registry from its own `master` (same repo, protect it).
-  - To update: run `build-deploy-registry.py`, then PR the new `sites.json` (and the rendered workflow if branches changed) into each repo.
+  - To update: run `sync/lib/build_registry.py`, then PR the new `sites.json` (and the rendered workflow if branches changed) into each repo.
 - **Pinned actions:**
   - `appleboy/ssh-action@0ff4204d59e8e51228ff73bce53f80d53301dee2` (v1.2.5; upgraded from v1.0.3, which always echoed the script to the log. v1.2.5 echoes it only with `debug: true`, and we set `debug: false`)
   - `actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683` (v4.2.2)
@@ -76,9 +76,9 @@ Branch protection or rulesets on `master` and the site branches (no force-push o
 After merging pegasus-child#4, push the workflow to every site branch. GitHub runs the workflow file from the pushed branch, so each site branch needs its own copy:
 
 ```bash
-sync/apply-deploy-workflow-to-child-branches.sh                 # dry run
-sync/apply-deploy-workflow-to-child-branches.sh --push          # all mapped branches (each push deploys that site)
-sync/apply-deploy-workflow-to-child-branches.sh --push mabellas_theme   # one branch
+sync/pegasus.sh rollout-child                 # dry run
+sync/pegasus.sh rollout-child --push          # all mapped branches (each push deploys that site)
+sync/pegasus.sh rollout-child --push mabellas_theme   # one branch
 ```
 
 ## Secrets Jim must add (organization secrets, restricted to the 20 pegasus repos)
@@ -101,15 +101,15 @@ Without `SITEGROUND_SSH_KEY`, each workflow logs a notice and exits successfully
 
 For each site, the workflow needs:
 
-1. **SSH access with the ULG key.** In SiteGround Site Tools → Devs → SSH Keys Manager, import the **public** key for `ulg_siteground`, or confirm it is already there. Test with `sync/deploy.sh` (connection test) or `ssh -i ~/.ssh/ulg_siteground -p 18765 user@host echo ok`.
+1. **SSH access with the ULG key.** In SiteGround Site Tools → Devs → SSH Keys Manager, import the **public** key for `ulg_siteground`, or confirm it is already there. Test with `ssh -i ~/.ssh/ulg_siteground -p 18765 user@host echo ok`.
 2. **The server must be able to `git fetch` from GitHub.** All 20 repos are public.
    - **HTTPS remotes** (`https://github.com/Visionquest-Development/<repo>.git`) need no key. This is the simplest option.
    - **`git@github.com:` remotes** need an SSH key on the server that GitHub accepts:
      - Run `ssh-keygen -t ed25519` on the server (or reuse the server's existing key).
      - Add its public key to GitHub, either as a deploy key per repo (one key can only be a deploy key for **one** repo) or on a machine user / Jim's account.
-     - `sync/setup-repos.sh` already has a "show/generate SSH key" helper.
+     - `sync/pegasus.sh setup` already has a "show/generate SSH key" helper.
    - Check with `cd wp-content/plugins/<repo> && git remote -v && git fetch` on the server.
-3. **Each theme/plugin folder on the server is a git clone** on the expected branch: `master`/`main`, or the site's pegasus-child branch. Use `sync/setup-repos.sh` to clone any that are missing.
+3. **Each theme/plugin folder on the server is a git clone** on the expected branch: `master`/`main`, or the site's pegasus-child branch. Use `sync/pegasus.sh setup` to clone any that are missing.
 4. **No uncommitted edits on the server** (otherwise that site's job fails on purpose).
 
 Set `deploy_key_status` in `sync/sites.json` to `ok` once a site passes all four checks. Every site is `unknown` today: deploy-key status was not verified on any server.
@@ -197,13 +197,13 @@ Sites staged in a subfolder of another SiteGround account have `environment: "st
 | `qbiqsystem-staging` | qbiqsystem.com/test (lives at chrishixson.com/test) | `chrishixson` (u869-geq9wwrhqrna@gvam1007) | /home/u869-geq9wwrhqrna/www/chrishixson.com/public_html/test | qbiqsystem_theme |
 | `hfhs-staging` | visionquestdev.com/hfhs | `vqdev` (u137-u0edzwblljc1@ssh.visionquestdev.com) | /home/u137-u0edzwblljc1/www/visionquestdev.com/public_html/hfhs | hfhsga_theme |
 
-Staging sites are defined in `STAGING` in `sync/build-deploy-registry.py`.
+Staging sites are defined in `STAGING` in `sync/lib/build_registry.py`.
 
 To **promote a staging site to live**:
 1. Once the live SiteGround site exists, set the live entry's `ssh_user`, `ssh_host` and `remote_path` in `sync/sites.json`. Give it `environment: "live"` and the same `pegasus-child` branch.
-2. Remove the staging key from `STAGING` in `build-deploy-registry.py`, or keep it if both should deploy.
+2. Remove the staging key from `STAGING` in `sync/lib/build_registry.py`, or keep it if both should deploy.
 3. Regenerate the registry, then PR `.github/deploy/sites.json` (and the regenerated workflows) into the repos.
-4. On the live server, clone the theme and plugins (`sync/setup-repos.sh`) and run checklist steps 1–4.
+4. On the live server, clone the theme and plugins (`sync/pegasus.sh setup`) and run checklist steps 1–4.
 
 ## SSH host key pinning (`ssh_fingerprint`)
 
@@ -227,7 +227,7 @@ The builder keeps the stored values unless you ask it to refresh.
 
 **Refresh** (after SiteGround rotates host keys or moves a site; the symptom is a deploy FAIL with `host key fingerprint mismatch`):
 1. Check the new key is genuine first: Site Tools, or SiteGround support. Then update known_hosts: `ssh-keygen -R '[host]:18765'`, then reconnect with `ssh -p 18765 user@host`. OpenSSH's UpdateHostKeys then records all of the server's keys, RSA included.
-2. Run `cd sync && python3 build-deploy-registry.py --child-branches "$(git ls-remote --heads git@github.com:Visionquest-Development/pegasus-child.git | sed 's@.*refs/heads/@@')" --refresh-fingerprints`.
+2. Run `sync/pegasus.sh registry --child-branches auto --refresh-fingerprints`.
    - This runs `ssh-keyscan -p <port> -t ecdsa|rsa|ed25519` (first type that answers, in Go order), computes SHA256 with `ssh-keygen -lf -`, and cross-checks `ssh-keygen -F '[host]:port'`. A **mismatch** is not pinned and is printed as a WARNING.
    - If keyscan fails, it falls back to known_hosts (same order).
    - Add `--known-hosts-only` to skip the network entirely. Use this when SiteGround's firewall is blocking you.
@@ -249,8 +249,8 @@ Actions logs on these repos may be public, so the workflow prints as little as p
 Deploys work whether a repo's default branch is `master` or `main`, before, during and after a rename.
 
 - **Workflows (pegasus + plugins):** trigger on `push` to `[master, main]` but deploy only when the pushed branch equals the repo's current default branch (`github.event.repository.default_branch`). A stale push to the old name deploys nothing.
-- **pegasus-child:** reads `.github/deploy/sites.json` from its default branch (whatever it's called). Site branches (`*_theme`) are never renamed. `sync/apply-deploy-workflow-to-child-branches.sh` copies the workflow from the default branch.
-- **Registry builder:** `sync/build-deploy-registry.py` reads each repo's default branch from GitHub (`git ls-remote --symref`) and writes it into the registry, `sync/sites.json` and `repos.json`. Use `--offline` to keep the stored values. `setup-repos.sh` and `git-status.sh` follow `origin/HEAD` instead of assuming master.
+- **pegasus-child:** reads `.github/deploy/sites.json` from its default branch (whatever it's called). Site branches (`*_theme`) are never renamed. `sync/pegasus.sh rollout-child` copies the workflow from the default branch.
+- **Registry builder:** `sync/lib/build_registry.py` reads each repo's default branch from GitHub (`git ls-remote --symref`) and writes it into the registry, `sync/sites.json` and `repos.json`. Use `--offline` to keep the stored values. `setup-repos.sh` and `git-status.sh` follow `origin/HEAD` instead of assuming master.
 - **Server copies:** the deploy never switches branches on a server. If a server copy is on `master` while the repo's default is `main` (or the other way round), the deploy SKIPs with `server on <cur>, default is <new>: run sync/migrate-default-branch-to-main.sh --servers or switch manually`. Other branch mismatches also SKIP.
 - **Doing the rename:** `sync/migrate-default-branch-to-main.sh` (dry run by default; add `--apply` to change anything).
   1. `./migrate-default-branch-to-main.sh --apply`: renames on GitHub (`gh api -X POST repos/OWNER/REPO/branches/master/rename -f new_name=main`; GitHub retargets open PRs and redirects the old name), then switches local VVV copies.
@@ -264,8 +264,8 @@ Deploys work whether a repo's default branch is `master` or `main`, before, duri
 1. Add an entry to `sync/sites.json`:
    - `name`, `domain`, `ssh_user`, `ssh_host`, `ssh_port` (18765), `remote_path` (…/public_html)
    - `themes.pegasus-child.branch`, `plugins`, and `environment`
-   - Also add the domain to `DOMAINS` in `sync/build-deploy-registry.py`.
+   - Also add the domain to `DOMAINS` in `sync/lib/build_registry.py`.
 2. Create the site's pegasus-child branch on GitHub, from master or from the site's existing theme.
-3. Run `python3 sync/build-deploy-registry.py --child-branches "…"` (see above). Then PR `sync/deploy-registry.json` as `.github/deploy/sites.json` into each repo (and pegasus-child's rendered workflow, `sync/deploy-workflow/out/pegasus-child.yml`, which now includes the new branch in its allowlist).
-4. Push the workflow to the new branch: `sync/apply-deploy-workflow-to-child-branches.sh --push <branch>`.
+3. Run `sync/pegasus.sh registry --child-branches auto` (see above). Then PR `sync/deploy-registry.json` as `.github/deploy/sites.json` into each repo (and pegasus-child's rendered workflow, `sync/deploy-workflow/out/pegasus-child.yml`, which now includes the new branch in its allowlist).
+4. Push the workflow to the new branch: `sync/pegasus.sh rollout-child --push <branch>`.
 5. Complete the server checklist.

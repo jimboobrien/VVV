@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Copy the registry-driven deploy workflow from pegasus-child's default branch (master or main) onto every site branch mapped in the registry.
-# Run AFTER merging Visionquest-Development/pegasus-child#4.
-#   ./apply-deploy-workflow-to-child-branches.sh            # dry run: shows what would change per branch
-#   ./apply-deploy-workflow-to-child-branches.sh --push     # commit + push (each push triggers that site's deploy!)
-#   ./apply-deploy-workflow-to-child-branches.sh --push mabellas_theme ulg_theme   # only these branches
+# Called by: sync/pegasus.sh rollout-child [--push] [branch..]
+#   ./pegasus.sh rollout-child            # dry run: shows what would change per branch
+#   ./pegasus.sh rollout-child --push     # commit + push (each push triggers that site's deploy!)
+#   ./pegasus.sh rollout-child --push mabellas_theme ulg_theme   # only these branches
 # Never force-pushes, never touches the default branch. Uses a temp clone; your local working copies are untouched.
 set -euo pipefail
 PUSH=false; [ "${1:-}" = "--push" ] && { PUSH=true; shift; }

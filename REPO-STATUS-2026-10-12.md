@@ -1,6 +1,6 @@
 # Pegasus / wp-bootstrap-hooks / vqdev-toast repo status (last scan 2026-10-14T16:31:46-04:00)
 
-Source: a fresh `git fetch` per copy, run by `sync/rescan-pegasus-status.py`. The same data feeds the JSON, the CSV and http://localhost:3001/pegasus-status.
+Source: a fresh `git fetch` per copy, run by `sync/pegasus.sh status` (sync/lib/rescan_status.py). The same data feeds the JSON, the CSV and http://localhost:3001/pegasus-status.
 
 **225 copies across 34 sites.**
 
@@ -298,12 +298,12 @@ Source: a fresh `git fetch` per copy, run by `sync/rescan-pegasus-status.py`. Th
 
 ## Updated 2026-10-13, full rescan (4:00 PM)
 
-- Fresh `git fetch` of all 225 copies, using `sync/rescan-pegasus-status.py`. This regenerated the JSON, the CSV and the full table below, and added commit, commit date and origin-head columns.
+- Fresh `git fetch` of all 225 copies, using `sync/pegasus.sh status` (sync/lib/rescan_status.py). This regenerated the JSON, the CSV and the full table below, and added commit, commit date and origin-head columns.
 - pegasus-child site branches now get their own status instead of the single "Off main (expected)" label.
 
 ## Updated 2026-10-14 (4:31 PM): rescan bug fixed
 
-- Bug: `sync/rescan-pegasus-status.py` read upstream state through `@{u}` and `origin/<branch>`. elliot, stoutbros, valorcare and renecatherinedesign are single-branch clones: their `remote.origin.fetch` maps only master. In those clones `@{u}` fails ("not stored as a remote-tracking branch"), and `git fetch` never updates `origin/<branch>`. They were wrongly reported as having no upstream.
+- Bug: `sync/pegasus.sh status` (sync/lib/rescan_status.py) read upstream state through `@{u}` and `origin/<branch>`. elliot, stoutbros, valorcare and renecatherinedesign are single-branch clones: their `remote.origin.fetch` maps only master. In those clones `@{u}` fails ("not stored as a remote-tracking branch"), and `git fetch` never updates `origin/<branch>`. They were wrongly reported as having no upstream.
 - Fix: the script now reads `branch.<b>.merge` and fetches `+refs/heads/<b>:refs/remotes/origin/<b>` explicitly before comparing. A branch that is truly not on origin is reported with the origin branches that contain its HEAD.
 - 34oak, gentwo and organizepluscleaning are clean and current; the 2026-10-13 snapshot was simply stale.
 - valorcare was clean and 1 behind, so it was pulled with `--ff-only` from 3d4a504 to 8c8c0c6.

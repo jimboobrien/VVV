@@ -3,15 +3,19 @@
 
 - Reads and updates sync/sites.json (the central registry; deploy.sh/setup-repos.sh keep working).
 - Refreshes each site's plugin list from the local VVV copy (www/<local_dir>/public_html/wp-content/plugins).
-- Writes sync/deploy-registry.json: the trimmed copy that GitHub Actions read. Copy it to
-  pegasus-child master at deploy/sites.json (see DEPLOY-SITEGROUND.md).
-Usage: python3 sync/build-deploy-registry.py [--child-branches "b1 b2 ..."] [--offline] [--refresh-fingerprints]
+- Writes sync/deploy-registry.json: the trimmed copy that GitHub Actions read (vendored as .github/deploy/sites.json
+  in each repo; see DEPLOY-SITEGROUND.md).
+Normally run through sync/pegasus.sh:
+  pegasus.sh registry [--child-branches "b1 b2 ..."] [--offline] [--refresh-fingerprints [--known-hosts-only]]
+  pegasus.sh workflow render <repo>          # print that repo's workflow to stdout (writes nothing)
+  pegasus.sh workflow apply [--push] [repo..] # temp-clone each repo's default branch, write workflow + registry;
+                                              # dry run by default; --push pushes a chore/ branch (never the default) for a PR
   --refresh-fingerprints: re-scan every enabled ssh_host:port (ssh-keyscan in Go client order ecdsa > rsa > ed25519), cross-check
   ~/.ssh/known_hosts, store SHA256 as ssh_fingerprint. Without it, stored fingerprints are kept as-is.
   --known-hosts-only (with --refresh-fingerprints): no network; take fingerprints from ~/.ssh/known_hosts (same key order).
 """
 import json, os, re, sys, subprocess, time
-HERE = os.path.dirname(os.path.abspath(__file__)); ROOT = os.path.dirname(HERE)
+HERE = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); ROOT = os.path.dirname(HERE)
 SITES = os.path.join(HERE, 'sites.json'); OUT = os.path.join(HERE, 'deploy-registry.json')
 DEFAULT_PORT = 18765
 # Component repo -> folder name(s) used under wp-content
@@ -137,19 +141,43 @@ def apply_fingerprint(s, refresh):
     if fp and not FP_RE.match(fp): print(f"WARNING: invalid ssh_fingerprint for {s.get('domain')}; ignored", file=sys.stderr); fp = ''
     return fp
 
-def render_workflows(reg):
-    # Render one workflow per repo from deploy-workflow/deploy-siteground.template.yml with an explicit push allowlist.
-    wd = os.path.join(HERE, 'deploy-workflow'); tpl = open(os.path.join(wd, 'deploy-siteground.template.yml')).read()
-    script = open(os.path.join(wd, 'remote-deploy.sh')).read().rstrip('\n').split('\n')
+def child_allowlist(reg):
+    return sorted({v['child_branch'] for v in reg['sites'].values() if v['child_branch'] and v['child_branch'] != 'master' and v.get('enabled')})
+
+def render_workflow(reg, repo):
+    # Render repo's workflow from sync/deploy-siteground.template.yml + sync/remote-deploy.sh with an explicit push allowlist.
+    if repo not in reg['components']: sys.exit(f"unknown repo {repo}; known: {' '.join(reg['components'])}")
+    tpl = open(os.path.join(HERE, 'deploy-siteground.template.yml')).read()
+    script = open(os.path.join(HERE, 'remote-deploy.sh')).read().rstrip('\n').split('\n')
     tpl = tpl.replace('            #DEPLOY_SCRIPT#', '\n'.join(('            ' + l) if l else '' for l in script))
-    out = os.path.join(wd, 'out'); os.makedirs(out, exist_ok=True)
-    child = sorted({v['child_branch'] for v in reg['sites'].values() if v['child_branch'] and v['child_branch'] != 'master' and v.get('enabled')})
-    for repo, c in reg['components'].items():
-        # Theme/plugin repos: allow both names so a master->main rename keeps working; the plan job only deploys the current default.
-        br = child if repo == 'pegasus-child' else ['master', 'main']
-        txt = tpl.replace('#BRANCHES#', '\n'.join('      - ' + json.dumps(b) for b in br))
-        open(os.path.join(out, repo + '.yml'), 'w').write(txt)
-    return child
+    # Theme/plugin repos: allow both names so a master->main rename keeps working; the plan job only deploys the current default.
+    br = child_allowlist(reg) if repo == 'pegasus-child' else ['master', 'main']
+    return tpl.replace('#BRANCHES#', '\n'.join('      - ' + json.dumps(b) for b in br))
+
+WF_PATH = '.github/workflows/deploy-siteground.yml'; REG_PATH = '.github/deploy/sites.json'
+
+def apply_workflows(repos, push):
+    # Never touches the default branch on GitHub: with --push it pushes chore/sync-deploy-workflow-<date> for a PR.
+    import tempfile, shutil
+    reg = json.load(open(OUT)); repos = repos or list(reg['components'])
+    tmp = tempfile.mkdtemp(); branch = 'chore/sync-deploy-workflow-' + time.strftime('%Y%m%d-%H%M')
+    try:
+        for repo in repos:
+            d = os.path.join(tmp, repo); url = f'git@github.com:Visionquest-Development/{repo}.git'
+            if subprocess.run(['git', 'clone', '-q', '--depth', '1', url, d]).returncode: print(f'FAILED   {repo} (clone)'); continue
+            g = lambda *a: subprocess.run(['git', '-C', d, *a], capture_output=True, text=True)
+            os.makedirs(os.path.join(d, '.github/workflows'), exist_ok=True); os.makedirs(os.path.join(d, '.github/deploy'), exist_ok=True)
+            open(os.path.join(d, WF_PATH), 'w').write(render_workflow(reg, repo))
+            shutil.copyfile(OUT, os.path.join(d, REG_PATH))
+            g('add', WF_PATH, REG_PATH)
+            if not g('diff', '--cached', '--name-only').stdout.strip(): print(f'CURRENT  {repo}'); continue
+            stat = g('diff', '--cached', '--stat').stdout.strip().splitlines()[-1]
+            if not push: print(f'WOULD    {repo} ({stat})'); continue
+            g('checkout', '-q', '-b', branch); g('commit', '-q', '-m', 'Sync SiteGround deploy workflow + registry from vagrant-local/sync')
+            r = g('push', '-q', 'origin', branch)
+            print(f'PUSHED   {repo} {branch} -> open PR: https://github.com/Visionquest-Development/{repo}/compare/{branch}?expand=1' if r.returncode == 0 else f'FAILED   {repo} push: {r.stderr.strip()}')
+    finally: shutil.rmtree(tmp, ignore_errors=True)
+    if not push: print('Dry run only. Re-run with --push to push chore branches (open and merge the PRs yourself).')
 
 def local_info(d):
     base = os.path.join(ROOT, 'www', d or '', 'public_html', 'wp-content')
@@ -212,17 +240,22 @@ def main():
             'ssh_port': s['ssh_port'], 'wp_content': s['wp_content'], 'child_branch': cb, 'plugins': s['plugins'],
             'ssh_fingerprint': apply_fingerprint(s, refresh)}
     rp = os.path.join(HERE, 'repos.json')
-    if os.path.exists(rp):  # git-status.sh reads repos.json; keep the parent-theme branch in sync too
+    if os.path.exists(rp):  # lib/git_status.sh reads repos.json; keep the parent-theme branch in sync too
         rj = json.load(open(rp))
         for v in rj.get('sites', {}).values():
             if 'pegasus' in v.get('themes', {}): v['themes']['pegasus']['branch'] = COMPONENTS['pegasus']['branch']
         json.dump(rj, open(rp, 'w'), indent=2); open(rp, 'a').write('\n')
     json.dump(data, open(SITES, 'w'), indent=2); open(SITES, 'a').write('\n')
     json.dump(reg, open(OUT, 'w'), indent=2); open(OUT, 'a').write('\n')
-    child = render_workflows(reg)
+    child = child_allowlist(reg)
     en = [k for k, v in reg['sites'].items() if v['enabled']]
-    print(f"rendered workflows for {len(reg['components'])} repos; pegasus-child push allowlist: {len(child)} branches")
+    print(f"{len(reg['components'])} repos; pegasus-child push allowlist: {len(child)} branches")
     pinned = [k for k in en if reg['sites'][k]['ssh_fingerprint']]
     print(f"host key fingerprints: {len(pinned)}/{len(en)} enabled sites pinned; unpinned (deploy SKIPs): {', '.join(sorted(set(en) - set(pinned))) or 'none'}")
     print(f"{len(reg['sites'])} SiteGround sites, {len(en)} enabled (host/user/path known); wrote {OUT}")
-main()
+if '--render' in sys.argv:
+    sys.stdout.write(render_workflow(json.load(open(OUT)), sys.argv[sys.argv.index('--render') + 1]))
+elif '--apply' in sys.argv:
+    apply_workflows([a for a in sys.argv[1:] if not a.startswith('--')], '--push' in sys.argv)
+else:
+    main()
