@@ -96,3 +96,5 @@ id_ed25519*
 
 # Local backups and old logs (see backups/MANIFEST.md)
 /backups/
+__pycache__/
+*.pyc
